@@ -1,120 +1,20 @@
-# DCGAN in Tensorflow
-
-Tensorflow implementation of [Deep Convolutional Generative Adversarial Networks](http://arxiv.org/abs/1511.06434) which is a stabilize Generative Adversarial Networks. The referenced torch code can be found [here](https://github.com/soumith/dcgan.torch).
-
-![alt tag](DCGAN.png)
-
-* [Brandon Amos](http://bamos.github.io/) wrote an excellent [blog post](http://bamos.github.io/2016/08/09/deep-completion/) and [image completion code](https://github.com/bamos/dcgan-completion.tensorflow) based on this repo.
-* *To avoid the fast convergence of D (discriminator) network, G (generator) network is updated twice for each D network update, which differs from original paper.*
+运行代码：python main.py --input_height 256 --input_width 256 --output_height 64 --output_width 64 --dataset KaiFaZheZuiShuai --crop --train --epoch 300 --input_fname_pattern "*.jpg"
 
 
-## Online Demo
 
-[<img src="https://raw.githubusercontent.com/carpedm20/blog/master/content/images/face.png">](http://carpedm20.github.io/faces/)
+%
 
-[link](http://carpedm20.github.io/faces/)
+input_height与input_width后面的数字是输入图像的长宽，output_height与output_width则是输出图像，dataset后面的是文件夹data里训练图片的文件夹名称，epoch是迭代次数。
+输出的图片和保存的模型在out文件夹里。
 
+原作品：https://github.com/carpedm20/DCGAN-tensorflow
+UP主再创作的作品：https://github.com/RuikangSun/teen-girl-generator
+UP主个人空间：https://space.bilibili.com/32934057
 
-## Prerequisites
+需要的框架：
+Python 2.7 or Python 3.3+
+Tensorflow 0.12.1
+SciPy
+pillow
 
-- Python 2.7 or Python 3.3+
-- [Tensorflow 0.12.1](https://github.com/tensorflow/tensorflow/tree/r0.12)
-- [SciPy](http://www.scipy.org/install.html)
-- [pillow](https://github.com/python-pillow/Pillow)
-- (Optional) [moviepy](https://github.com/Zulko/moviepy) (for visualization)
-- (Optional) [Align&Cropped Images.zip](http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html) : Large-scale CelebFaces Dataset
-
-
-## Usage
-
-First, download dataset with:
-
-    $ python download.py mnist celebA
-
-To train a model with downloaded dataset:
-
-    $ python main.py --dataset mnist --input_height=28 --output_height=28 --train
-    $ python main.py --dataset celebA --input_height=108 --train --crop
-
-To test with an existing model:
-
-    $ python main.py --dataset mnist --input_height=28 --output_height=28
-    $ python main.py --dataset celebA --input_height=108 --crop
-
-Or, you can use your own dataset (without central crop) by:
-
-    $ mkdir data/DATASET_NAME
-    ... add images to data/DATASET_NAME ...
-    $ python main.py --dataset DATASET_NAME --train
-    $ python main.py --dataset DATASET_NAME
-    $ # example
-    $ python main.py --dataset=eyes --input_fname_pattern="*_cropped.png" --train
-
-If your dataset is located in a different root directory:
-
-    $ python main.py --dataset DATASET_NAME --data_dir DATASET_ROOT_DIR --train
-    $ python main.py --dataset DATASET_NAME --data_dir DATASET_ROOT_DIR
-    $ # example
-    $ python main.py --dataset=eyes --data_dir ../datasets/ --input_fname_pattern="*_cropped.png" --train
-    
-
-## Results
-
-![result](assets/training.gif)
-
-### celebA
-
-After 6th epoch:
-
-![result3](assets/result_16_01_04_.png)
-
-After 10th epoch:
-
-![result4](assets/test_2016-01-27%2015:08:54.png)
-
-### Asian face dataset
-
-![custom_result1](web/img/change5.png)
-
-![custom_result1](web/img/change2.png)
-
-![custom_result2](web/img/change4.png)
-
-### MNIST
-
-MNIST codes are written by [@PhoenixDai](https://github.com/PhoenixDai).
-
-![mnist_result1](assets/mnist1.png)
-
-![mnist_result2](assets/mnist2.png)
-
-![mnist_result3](assets/mnist3.png)
-
-More results can be found [here](./assets/) and [here](./web/img/).
-
-
-## Training details
-
-Details of the loss of Discriminator and Generator (with custom dataset not celebA).
-
-![d_loss](assets/d_loss.png)
-
-![g_loss](assets/g_loss.png)
-
-Details of the histogram of true and fake result of discriminator (with custom dataset not celebA).
-
-![d_hist](assets/d_hist.png)
-
-![d__hist](assets/d__hist.png)
-
-
-## Related works
-
-- [BEGAN-tensorflow](https://github.com/carpedm20/BEGAN-tensorflow)
-- [DiscoGAN-pytorch](https://github.com/carpedm20/DiscoGAN-pytorch)
-- [simulated-unsupervised-tensorflow](https://github.com/carpedm20/simulated-unsupervised-tensorflow)
-
-
-## Author
-
-Taehoon Kim / [@carpedm20](http://carpedm20.github.io/)
+%
