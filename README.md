@@ -13,7 +13,7 @@ UP主再创作的作品：https://github.com/RuikangSun/teen-girl-generator
 UP主个人空间：https://space.bilibili.com/32934057
 
 演示视频：https://b23.tv/av56967234
-[![Watch the video]](https://www.bilibili.com/video/av56967234)
+[![Watch the video]](https://raw.github.com/GabLeRoux/WebMole/master/ressources/WebMole_Youtube_Video.png)](https://www.bilibili.com/video/av56967234)
 
 需要的框架：
 Python 2.7 or Python 3.3+
